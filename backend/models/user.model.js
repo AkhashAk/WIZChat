@@ -25,6 +25,10 @@ const userSchema = new mongoose.Schema(
 			type: String,
 			default: "",
 		},
+		noOfNewMessagesFromOthers: {
+			type: Object,
+			default: {},
+		}
 		// createdAt, updatedAt => Member since <createdAt>
 	},
 	{ timestamps: true }

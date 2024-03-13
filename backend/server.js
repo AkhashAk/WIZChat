@@ -3,6 +3,7 @@ import express from "express";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import cors from "cors";
+import bodyParser from "body-parser";
 
 import authRoutes from "./routes/auth.routes.js";
 import messageRoutes from "./routes/message.routes.js";
@@ -22,11 +23,12 @@ const corsOptions = {
 	origin: process.env.API_URL, // Replace with the actual origin of your frontend
 	methods: ["GET", "POST"],
 	credentials: true,
-	allowedHeaders: ["Authorization"],
+	allowedHeaders: ['Content-Type', "Authorization"],
 };
 
 app.use(cors(corsOptions));
 app.use(cookieParser());
+app.use(bodyParser.json());
 
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);

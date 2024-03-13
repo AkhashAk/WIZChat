@@ -31,6 +31,7 @@ export const signup = async (req, res) => {
 			password: hashedPassword,
 			gender,
 			profilePic: gender === "male" ? boyProfilePic : girlProfilePic,
+			noOfNewMessagesFromOthers: {},
 		});
 
 		if (newUser) {

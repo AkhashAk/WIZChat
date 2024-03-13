@@ -13,13 +13,9 @@ const useSignup = () => {
 
 		setLoading(true);
 		try {
-			const res = await axiosAPI.post("/api/auth/signup", {
-				body: JSON.stringify({ fullName, username, password, confirmPassword, gender }),
-			}, {
-				headers: { "Content-Type": "application/json" },
-			});
+			const res = await axiosAPI.post("/api/auth/signup", {fullName, username, password, confirmPassword, gender});
 
-			const data = await res.json();
+			const data = res.data;
 			if (data.error) {
 				throw new Error(data.error);
 			}
