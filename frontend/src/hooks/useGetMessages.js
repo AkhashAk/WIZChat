@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import useConversation from "../zustand/useConversation";
 import toast from "react-hot-toast";
-import {axiosAPI} from "../utils/http-common";
+import { axiosAPI } from "../utils/http-common";
 
 const useGetMessages = () => {
 	const [loading, setLoading] = useState(false);
@@ -16,6 +16,7 @@ const useGetMessages = () => {
 				if (data.error) throw new Error(data.error);
 				setMessages(data);
 			} catch (error) {
+				console.log(error);
 				toast.error(error.message);
 			} finally {
 				setLoading(false);

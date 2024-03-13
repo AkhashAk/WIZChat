@@ -23,18 +23,19 @@ const useGetConversations = () => {
 					throw new Error(data.error);
 				}
 
-				const { data: loggedInUser } = await axiosAPI.get(`/api/users/${authUser._id}`);
+				// const { data: loggedInUser } = await axiosAPI.get(`/api/users/${authUser._id}`);
 
 				// console.log("loggedInUser = ", loggedInUser);
 
-				data.forEach(sideBarUser => {
-					sideBarUser.noOfNewMessages = loggedInUser.noOfNewMessagesFromOthers[sideBarUser.username];
-				});
+				// data.forEach(sideBarUser => {
+				// 	sideBarUser.noOfNewMessages = loggedInUser.noOfNewMessagesFromOthers[sideBarUser.username];
+				// });
 
 				// console.log("data users = ", data);
 
 				setConversations(data);
 			} catch (error) {
+				console.log(error);
 				toast.error(error.message);
 			} finally {
 				setLoading(false);
